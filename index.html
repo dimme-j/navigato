@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappedin Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .nav-button {
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Sidebar Design */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 40%;
+            max-width: 600px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -3px 0 10px rgba(0, 0, 0, 0.3);
+            transition: right 0.4s ease-in-out;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .sidebar.open {
+            right: 0;
+        }
+        .sidebar h2 {
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007BFF;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        iframe {
+            width: 100%;
+            height: 90%;
+            border: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Our Navigation System</h1>
+    <button class="nav-button" onclick="toggleSidebar()">Open Navigation</button>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+        <h2>Interactive Map</h2>
+        <iframe
+            id="mapFrame"
+            src="https://app.mappedin.com/map/67a0cae2d8fd37000b842289/directions?floor=m_0cd9a1ad55252ce0&location=s_8ba715666f1d68a2&departure=43.49351554702368,-80.5697701216392,m_0cd9a1ad55252ce0&embedded=true">
+        </iframe>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            let sidebar = document.getElementById("sidebar");
+            if (sidebar.classList.contains("open")) {
+                sidebar.classList.remove("open");
+            } else {
+                sidebar.classList.add("open");
+            }
+        }
+    </script>
+
+</body>
+</html>
